@@ -14,8 +14,13 @@ const lobster = Lobster({
 gsap.registerPlugin(ScrollTrigger);
 
 export function AnimacionScrollT() {
-    const urlFondo : string = "./img/bellas.webp";
-    const urlTunel : string = "./img/tunel2.webp";
+    const opcionesFotos : string[] = ["angel.jpg", "bellas.webp", "bosque_chapultepec.jpg", "museo_antropologia.jpg", "tepozteco2.jpg", "tepozteco3.jpg", "tepozteco4.jpg", "tepozteco6.jpg"]
+    const random : number = Math.floor(Math.random() * opcionesFotos.length);
+    const fotoFondo : string = opcionesFotos[random];
+
+    // const urlFondo : string = "./img/bellas.webp";
+    const urlFondo : string = `./img/${fotoFondo}`
+    const urlTunel : string = "./img/tunel1.png";
 
     const wrapperRef = useRef<HTMLDivElement>(null);
     const imgRef = useRef<HTMLImageElement>(null);

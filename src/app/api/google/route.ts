@@ -42,7 +42,8 @@ export async function POST(request: Request) {
 
     // 2. Consultar a tu backend
     const backendRes = await fetch(
-      "https://harol-lovers.up.railway.app/auth/google",
+      `${process.env.NEXT_PUBLIC_HOST}/auth/google`,
+      // "http://localhost:4000/auth/google",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

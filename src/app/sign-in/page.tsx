@@ -30,6 +30,12 @@ export default function SignInPage() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
+  const [foto] = useState(() => {
+    const opciones : string[] = ["museo_soumaya.jpg", "tepozteco5.jpg"];
+    const random: number = Math.floor(Math.random() * opciones.length);
+    return opciones[random];
+  });
+
   const api = ItinerariosAPI.getInstance();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -77,12 +83,12 @@ export default function SignInPage() {
       <div className="flex w-full max-w-4xl min-h-[600px] overflow-hidden rounded-2xl shadow-2xl">
         <FloatingShape color="bg-blue-500" size="w-64 h-64" top="70%" left="5%" delay={5} />
         <FloatingShape color="bg-sky-500" size="w-48 h-48" top="-5%" left="80%" delay={0} />
-        
+
         {/* Panel Izquierdo: Imagen Decorativa */}
         <div className="hidden lg:block lg:w-1/2">
           <Image
-            src="/img/museo_soumaya.jpg"
-            alt="Mural del Palacio de Bellas Artes"
+            src={`/img/${foto}`}
+            alt="Imagen decorativa del inicio de sesion"
             width={1920}
             height={1080}
             className="h-full w-full object-cover"
@@ -91,7 +97,7 @@ export default function SignInPage() {
         </div>
 
         {/* Panel Derecho: Formulario */}
-        <div className="flex w-full flex-col items-center justify-center bg-card p-8 lg:w-1/2">
+        <div className="flex w-full flex-col items-center justify-center bg-card p-8 lg:w-1/2 z-2">
           <div className="w-full max-w-sm text-center">
 
             <Form {...form}>

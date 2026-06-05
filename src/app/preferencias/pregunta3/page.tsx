@@ -150,7 +150,8 @@ export default function Pregunta3Page() {
       const token = localStorage.getItem('authToken');
 
       const res = await fetch(
-        'https://harol-lovers.up.railway.app/preferencias/register',
+        `${process.env.NEXT_PUBLIC_HOST}/preferencias/register`,
+        // 'http://localhost:4000/preferencias/register',
         {
           method: 'POST',
           headers: {

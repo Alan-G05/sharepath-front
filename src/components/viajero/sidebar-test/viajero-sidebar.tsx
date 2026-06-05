@@ -67,7 +67,8 @@ export function ViajeroSidebar(props: React.ComponentProps<typeof Sidebar>) {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await fetch("https://harol-lovers.up.railway.app/user", {
+        // const res = await fetch("http://localhost:4000/user", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/user`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

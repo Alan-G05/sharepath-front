@@ -29,7 +29,8 @@ export default function CRUDItinerariosPage() {
     async function fetchData() {
       try {
         const res = await fetch(
-          "https://harol-lovers.up.railway.app/admin/itinerarios",
+          // "http://localhost:4000/admin/itinerarios",
+          `${process.env.NEXT_PUBLIC_HOST}/admin/itinerarios`,
           {
             method: "GET",
             headers: {
@@ -75,7 +76,8 @@ export default function CRUDItinerariosPage() {
   const actualizarEstado = async (id: number, nuevoEstado: string) => {
     try {
       await fetch(
-        `https://harol-lovers.up.railway.app/admin/itinerarios/${id}/estado`,
+        `${process.env.NEXT_PUBLIC_HOST}/admin/itinerarios/${id}/estado`,
+        // `http://localhost:4000/admin/itinerarios/${id}/estado`,
         {
           method: "PUT",
           headers: {
@@ -101,7 +103,8 @@ export default function CRUDItinerariosPage() {
 
     try {
       await fetch(
-        `https://harol-lovers.up.railway.app/admin/itinerarios/${id}`,
+        `${process.env.NEXT_PUBLIC_HOST}/admin/itinerarios/${id}`,
+        // `http://localhost:4000/admin/itinerarios/${id}`,
         {
           method: "DELETE",
           headers: {

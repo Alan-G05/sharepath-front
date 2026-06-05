@@ -92,6 +92,12 @@ export default function SignUpPage() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
+  const [foto] = useState(() => {
+    const opciones: string[] = ["bellas_artes.jpg", "tepozteco1.jpg", "torre_latinoamericana.jpg"];
+    const random: number = Math.floor(Math.random() * opciones.length);
+    return opciones[random];
+  });
+
   // 2. Configuramos el formulario con React Hook Form y el resolver de Zod
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -155,13 +161,8 @@ export default function SignUpPage() {
       <FloatingShape color="bg-sky-500" size="w-48 h-48" top="70%" left="80%" delay={5} />
 
       <div className="flex w-full max-w-4xl min-h-[600px] overflow-hidden rounded-2xl shadow-2xl">
-        {/* Panel Izquierdo: Imagen */}
-        <div className="hidden lg:block lg:w-1/2">
-          <Image src="/img/bellas_artes.jpg" alt="Mural" width={1920} height={1080} className="h-full w-full object-cover" />
-        </div>
-
         {/* Panel Derecho: Formulario */}
-        <div className="flex w-full flex-col items-center justify-center bg-card p-8 lg:w-1/2">
+        <div className="flex w-full flex-col items-center justify-center bg-card p-8 lg:w-1/2 z-2">
           <div className="w-full max-w-sm text-center">
             <h2 className="mb-2 text-3xl font-bold">Regístrate</h2>
             <p className="mb-4 text-sm text-muted-foreground">Crea tu cuenta para empezar a explorar.</p>
@@ -175,7 +176,7 @@ export default function SignUpPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Nombre completo" {...field} className="py-5" disabled={isLoading} />
+                        <Input placeholder="Nombre completo" {...field} className="py-5" disabled={isLoading}/>
                       </FormControl>
                       {/* <FormMessage /> */}
                     </FormItem>
@@ -187,7 +188,7 @@ export default function SignUpPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Username" {...field} className="py-5" disabled={isLoading} />
+                        <Input placeholder="Username" {...field} className="py-5" disabled={isLoading} autoComplete="nope"/>
                       </FormControl>
                       {/* <FormMessage /> */}
                     </FormItem>
@@ -253,6 +254,11 @@ export default function SignUpPage() {
               </Link>
             </p>
           </div>
+        </div>
+
+        {/* Panel Izquierdo: Imagen */}
+        <div className="hidden lg:block lg:w-1/2">
+          <Image src={`/img/${foto}`} alt="Imagen decorativa del registro" width={1920} height={1080} className="h-full w-full object-cover" />
         </div>
       </div>
     </main>
